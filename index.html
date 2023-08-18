@@ -10,7 +10,7 @@
   <div id="main">
     <h1>Todo List</h1>
     <input type="text" id="input">
-    <button id="button">add todo</button>
+    <button id="add-todo">add todo</button>
     <ul id="list">
     </ul>
 
@@ -23,15 +23,29 @@
 </style>
 
 <script>
-
-  document.querySelector('#button').addEventListener('click', () => {
-    if (document.querySelector('#input').value !== '') {
-      const todo = document.createElement('li');
-      document.querySelector('#list').append(todo);
-      todo.textContent = document.querySelector('#input').value;
-    }
+  function createItem() {
+    const todo = document.createElement('li');
+    document.querySelector('#list').append(todo);
+    todo.textContent = document.querySelector('#input').value;
+    const deleteButton = document.createElement('button');
+    todo.append(deleteButton);
+    deleteButton.textContent = 'delete';
+    deleteButton.setAttribute('onclick', 'deleteItem(this)')
+  }
+  function clearItem() {
     document.querySelector('#input').value = '';
+  }
+  function deleteItem(itemToDelete) {
+    itemToDelete.parentElement.remove();
+  }
+  document.querySelector('#add-todo').addEventListener('click', () => {
+    if (document.querySelector('#input').value !== '') {
+      createItem();
+    }
+    clearItem();
   });
+  
+
   
 </script>
 
