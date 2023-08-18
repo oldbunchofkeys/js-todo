@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todo app</title>
+</head>
+<body>
+  <div id="main">
+    <h1>Todo List</h1>
+    <input type="text" id="input">
+    <button id="button">add todo</button>
+    <ul id="list">
+    </ul>
+
+  </div>
+</body>
+</html>
+
+<style>
+
+</style>
+
+<script>
+
+  document.querySelector('#button').addEventListener('click', () => {
+    if (document.querySelector('#input').value !== '') {
+      const todo = document.createElement('li');
+      document.querySelector('#list').append(todo);
+      todo.textContent = document.querySelector('#input').value;
+    }
+    document.querySelector('#input').value = '';
+  });
+  
+</script>
+
+<!-- todo app: input, take input value and create a dom element out of it, and append it to a ul -->
+
+<!-- took 16 minutes. made a bunch of dumb mistakes. could have been a lot faster -->
